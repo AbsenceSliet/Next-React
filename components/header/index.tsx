@@ -1,22 +1,29 @@
 import * as React from  'react'
 import Link from "next/link"
-import { Layout, Row, Col, Icon, Card,Empty, Menu, Button, message, Dropdown} from 'antd';
+import { Layout, Badge, Row, Col, Icon, Card,Empty, Menu, Button, message, Dropdown} from 'antd';
+import HeaderMenu from '~components/headerMenu/index'
 
 import './index.less'
-interface NavItem {
-    href:string,
-    name:string
-}
-let navs: Array<NavItem>;
+// interface NavItem {
+//     href:string,
+//     name:string
+// }
+// let navs: Array<NavItem>;
 
-navs = [{
+let navs = [{
     href: 'https://baidu.com',
     name: '百度'
 }, {
         href: 'https://baidu.com',
         name: 'VMC商城'
     }]
-
+let usernavs = [{
+    href: 'https://baidu.com',
+    name: '消息通知'
+}, {
+        href: 'https://baidu.com',
+        name: '我的订单'
+    }]
 interface MenuUser {
     href: string,
     name: string
@@ -36,42 +43,31 @@ class VmcHeader extends React.Component{
             </Menu >
         )
         const carTip:any =(
-            <Card>
-                <Empty description="购物车中还没有商品，赶紧选购吧"></Empty>
-            </Card>
+            <Menu>
+                <Menu.Item >
+                    <Card>
+                        <Empty description="购物车中还没有商品，赶紧选购吧"></Empty>
+                    </Card>
+                </Menu.Item>
+            </Menu >
         )
         return(
             <div className="vmcHeader ">
                 <div className="layout header-container">
                     <Row>
                         <Col span={16}>
-                            <Menu mode="horizontal" className="header-menu">
-                                {navs.map((item)=>(
-                                    <Menu.Item key={item.name} className="header-menu-item">
-                                    <Link href={item.href}>
-                                        <a>{item.name}</a>
-                                    </Link>
-                                    </Menu.Item>
-                                ))}
-                            </Menu>
+                            <HeaderMenu navs={navs}/>
                         </Col>
                         <Col span={8} className="header-item">
-                            <Dropdown overlay={userdrop}>
+                            <Dropdown overlay={<HeaderMenu navs={userMenu} modes="vertical" />}>
                                 <a className="ant-dropdown-link header-drop-link" href="#">
                                     username <Icon type="down" />
                                 </a>
                             </Dropdown>
-                            <Menu mode="horizontal" className="header-menu">
-                                <Menu.Item className="header-menu-item">
-                                    <a>消息通知</a>
-                                </Menu.Item>
-                                <Menu.Item className="header-menu-item">
-                                    <a>我的订单</a>
-                                </Menu.Item>
-                            </Menu>
+                            <HeaderMenu navs={usernavs} />
                             <Dropdown overlay={carTip} placement="bottomRight">
                                 <Button icon="shopping-cart" className="header-car" >
-                                购物车(0)
+                                    购物车(0)
                                 </Button>
                             </Dropdown>      
                         </Col>

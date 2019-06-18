@@ -17,12 +17,12 @@ body {
 .vmc-site-header {
   background-color: #fff;
 }
-.vmc-site-header .site-header-menu {
+.vmc-site-header .header-menu {
   line-height: 64px;
 }
-.vmc-site-header .site-header-menu .ant-menu-item-active {
+.vmc-site-header .header-menu .ant-menu-item-active {
   border-bottom-color: #ff6700;
 }
-.vmc-site-header .site-header-menu .ant-menu-item-active a {
+.vmc-site-header .header-menu .ant-menu-item-active a {
   color: #ff6700;
 }
