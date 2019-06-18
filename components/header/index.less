@@ -1,0 +1,43 @@
+@import "../../static/css/index.less";
+.vmcHeader {
+    background-color: @theme_header_bg_color;
+    height:46px;
+    .header-container{
+        padding:0px;
+        .header-menu{
+            display:inline-block;
+            background-color: @theme_header_bg_color;
+            &-item{
+                border:none;
+                a{
+                    color:@main_color;
+                }
+            }
+            .ant-menu-item-active{
+                a{
+                    color:@theme_white;
+                }
+            }
+        }
+        .header-item{
+            line-height: 46px;
+            .header-drop-link {
+                color:@main_color;
+                &:hover{
+                    color:@theme_white;
+                }
+            }
+            .header-car{
+                height:46px;
+                border:none;
+                background-color: @theme_header_bg_color;
+                color:@main_color;
+                border-radius: 0px;
+                &:hover{
+                    background-color: @theme_white;
+                    color:@theme_main_hover_color;
+                }
+            }
+        }
+    }
+}
