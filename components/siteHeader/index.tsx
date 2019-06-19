@@ -19,11 +19,11 @@ navs = [{
     name: 'VMC商城'
 }]
 export default class SiteHeader extends React.Component{
-    
+
     public render(){
         return(
-            <Layout className="vmc-site-header">
-                <Layout.Header className="layout ">
+            <section className="vmc-site-header">
+                <Layout.Header className="layout">
                     <Row>
                         <Col span={1}><Icon type="code-sandbox" /></Col>
                         <Col span={17}>
@@ -34,7 +34,7 @@ export default class SiteHeader extends React.Component{
                         </Col>
                     </Row>
                 </Layout.Header>
-            </Layout>
+            </section>
         )
     }
 }

@@ -20,7 +20,7 @@ class MyApp extends App {
                 <Container>
                     <div className="root">
                         <VmcHeader/>
-                        <div className="layout"><Component {...pageProps} /></div>
+                        <Component {...pageProps} />
                         <VmcFooter/>
                     </div>
                 </Container>

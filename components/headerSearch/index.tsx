@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Link from "next/link"
 import { Menu,Input } from 'antd';
-
+import './index.less'
 import HeaderMenu from '~components/headerMenu/index'
 interface ISearch{
     menuInfo:any[]
@@ -25,9 +25,11 @@ export default class HeaderSearch extends React.Component<ISearch > {
     }
     public render(){
         return (
-            <div>
+            <div className="header-search-wrapper">
                 <Input.Search onFocus={this.searchOnFocus} onChange={this.headersearch} onBlur={this.searchOnBlur }  size="large" placeholder="input search text" />
-                {this.state.searchsifocus && <HeaderMenu navs={this.props.menuInfo} modes="vertical" />}
+                <div className="search-tip">
+                    {this.state.searchsifocus && <HeaderMenu  navs={this.props.menuInfo} modes="vertical" />}
+                </div>
             </div>
         )
     }

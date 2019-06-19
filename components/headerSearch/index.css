@@ -1,0 +1,7 @@
+.header-search-wrapper {
+  position: relative;
+}
+.header-search-wrapper .search-tip {
+  position: absolute;
+  width: 100%;
+}
