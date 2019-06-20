@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Layout,Menu,Icon} from 'antd'
 import Link from 'next/link'
 import './index.less'
-
+import {withRouter} from  'next/router'
 interface ISubiItem{
     subname:string,
     href:string
@@ -10,18 +10,35 @@ interface ISubiItem{
 interface ISiderItem{
     icon:string,
     name:string,
-    subs?: ISubiItem[]
+    subs?: ISubiItem[],
+    p_name:string,
 }
 interface ISiderProps{
-    siderinfos: ISiderItem[]
+    siderinfos: ISiderItem[],
+    router:any
 }
-export default class Sider extends React.Component < ISiderProps > {
+ class Sider extends React.Component < ISiderProps > {
     public state={
-        current:''
+        current:'',
+        defaultOpenKeys: []
     }
+     public componentWillMount(){
+         const { siderinfos, router: { pathname } } = this.props
+         let defaultopenkeys = []
+         siderinfos.filter(item => {
+             if (item.subs) {
+                 item.subs.filter(val => {
+                     val.href == pathname ? defaultopenkeys.push(item.p_name) : defaultopenkeys
+                 })
+             }
+         })
+         this.setState({
+             current: pathname,
+             defaultOpenKeys: defaultopenkeys
+         })
+     }
     public componentDidMount(){
-        const { siderinfos } = this.props
-        let infos = [] 
+        
         // siderinfos.map(item=>{
         //     if(item.subs){
         //         infos.push(item.name)
@@ -36,20 +53,27 @@ export default class Sider extends React.Component < ISiderProps > {
             current:e.key
         })
     }
+     public onOpenChange = openkeys =>{
+         console.log(openkeys)
+        //  this.setState({
+        //     defaultOpenKeys: openkeys
+        //  })
+     }
     public  render(){
-        const {siderinfos}  = this.props
+        const { siderinfos}  = this.props
+        
         return (
             <Layout.Sider className="sider-wrapper">
                 <header>
                     <Icon type="user" />
                     <span>我的商城</span>
                 </header>
-                <Menu selectedKeys={[this.state.current]} onClick={this.menuSelect} mode="inline" className="sider-menu">
+                <Menu defaultOpenKeys={this.state.defaultOpenKeys} onOpenChange={this.onOpenChange} selectedKeys={[this.state.current]} onClick={this.menuSelect} mode="inline" className="sider-menu">
                     {siderinfos.map(item=>(
                         item.subs ? (
-                        <Menu.SubMenu className="sider-submenu" key={item.name} title={<span><Icon type={item.icon} />{item.name}</span>}>
+                            <Menu.SubMenu className="sider-submenu" key={item.p_name} title={<span><Icon type={item.icon} />{item.name}</span>}>
                             {item.subs.map(val=>(
-                                <Menu.Item key={val.subname}>
+                                <Menu.Item key={val.href}>
                                     <Link href={val.href}><a>{val.subname}</a></Link>
                                 </Menu.Item>
                             ))}
@@ -62,3 +86,4 @@ export default class Sider extends React.Component < ISiderProps > {
         )
     }
 }
+export default withRouter(Sider)

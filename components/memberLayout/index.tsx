@@ -16,6 +16,7 @@ const breadmessage = [{
 const siderinfos = [{
     name: '我的',
     icon: 'user',
+    p_name:'user',
     subs: [{
         subname: '收藏',
         href: '/list'
@@ -23,12 +24,14 @@ const siderinfos = [{
 }, {
     name: '列表',
     icon: 'meh',
+    p_name: 'list',
     subs: [{
         subname: '商品列表',
         href: '/list'
     }]
 }, {
     name: '订单中心',
+    p_name:'orders',
     icon: 'meh',
     subs: [{
         subname: '我的订单',
