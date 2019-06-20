@@ -1,13 +1,12 @@
 import * as React from "react"
-import Link from "next/link"
-import MemberIndex from  './index'
+import MemberLayout from '~components/MemberLayout/index'
 
-export default class Orders extends MemberIndex {
+export default class Orders extends React.Component {
     public render(){
         return (
-            <div>
+            <MemberLayout>
                 order page
-            </div>
+            </MemberLayout>
         )
     }
 }

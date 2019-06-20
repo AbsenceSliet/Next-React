@@ -4,6 +4,9 @@ import {LocaleProvider} from 'antd';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import VmcHeader from '~components/header/index.tsx'
 import VmcFooter from '~components/footer/index.tsx'
+import Router from 'next/router'
+import NProgress from 'nprogress'
+import { withRouter } from 'next/router' 
 class MyApp extends App {
     static async getInitialProps({Component, router, ctx}) {
         let pageProps = {}
@@ -14,7 +17,12 @@ class MyApp extends App {
         return {pageProps}
     }
     public render() {
-        const {Component, pageProps} = this.props
+        Router.onRouteChangeStart = () => {
+            NProgress.start()
+        }
+        Router.onRouteChangeComplete = () => NProgress.done()
+        Router.onRouteChangeError = () => NProgress.done()
+        const { Component, pageProps, router: { pathname }} = this.props
         return (
             <LocaleProvider locale={zh_CN}>
                 <Container>
@@ -29,4 +37,4 @@ class MyApp extends App {
     }
 }
 
-export default MyApp
+export default withRouter(MyApp)
