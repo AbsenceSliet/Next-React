@@ -1,0 +1,29 @@
+@import "../../static/css/index.less";
+.sider-wrapper{
+    header{
+        background-color: @theme_main_hover_color;
+        color:@theme_white;
+        padding:10px 0px 10px 20px;
+        font-size:16px;
+        span{
+            display:inline-block;
+            margin-left:10px;
+        }
+    }
+    .sider-menu{
+        .ant-menu-submenu-selected,.ant-menu-submenu-active {
+           .ant-menu-submenu-title{
+               color:@theme_main_hover_color;
+           }
+        }
+        .ant-menu-item-active,.ant-menu-item-selected {
+            color: @theme_main_hover_color;
+            >a {
+                color: @theme_main_hover_color;
+            }
+            &::after{
+                border-color:@theme_main_hover_color;
+            }
+        }
+    }
+}

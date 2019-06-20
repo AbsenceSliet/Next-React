@@ -8,6 +8,7 @@
         "dev": "NODE_ENV=development nodemon  server.js",
         "start": "next start",
         "build": "next build",
+        "next": "next",
         "export": "npm run  build && next export"
     },
     "keywords": [
@@ -35,6 +36,7 @@
         "@zeit/next-less": "^1.0.1",
         "axios": "^0.19.0",
         "babel-plugin-import": "^1.12.0",
+        "http-proxy-middleware": "^0.19.1",
         "less": "^3.9.0",
         "lru-cache": "^5.1.1",
         "nodemon": "^1.19.1"

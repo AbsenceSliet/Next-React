@@ -16,7 +16,7 @@ export default class BreadCurmb extends React.Component < IBreadcurmb > {
         return (
             <Breadcrumb>
                 {breadinfos.map(item=>(
-                    <Breadcrumb.Item>
+                    <Breadcrumb.Item key={item.name}>
                         {item.href ? (<a href={item.href}>{item.name}</a>):(<span>{item.name}</span>)}
                     </Breadcrumb.Item>
                 ))}
