@@ -35,6 +35,12 @@ module.exports = withTypescript(withCss(withLess({
         importLoaders: 1,
         localIdentName: "[local]___[hash:base64:5]",
     },
+    lessLoaderOptions: {
+        javascriptEnabled: true,
+        importLoaders: 1,
+        localIdentName: "[local]___[hash:base64:5]",
+
+    },
     webpack(config, options) {
         //  这里面还可以再配置哦 最后一个要return if (options.isServer) config.plugins.push(new
         // ForkTsCheckerWebpackPlugin())

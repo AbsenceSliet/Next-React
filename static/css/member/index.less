@@ -1,0 +1,41 @@
+
+@import '../index.less';
+.member-item{
+    height:168px;
+    margin-top:10px;
+    .ant-col{
+        height:100%;
+    }
+    .profile-item {
+        height:100%;
+        font-size:16px;
+        .profile-avatar {
+            border: 1px solid #d8d8d8;
+        }
+        .profile-item-right{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            height:120px;
+            p{
+                span{
+                    color:@theme_main_hover_color;
+                }
+            }
+            a{
+                font-size:14px;
+                cursor: pointer;
+                color:@theme_header_bg_color;
+            }
+            .setting-info {
+                color: @theme_main_hover_color;
+            }
+        }
+        &:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translate3d(0, -2px, 0);
+            transition: all .5s;
+        }
+    }
+}
+

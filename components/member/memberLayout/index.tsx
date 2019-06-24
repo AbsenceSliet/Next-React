@@ -2,7 +2,8 @@ import * as React from "react"
 import {  Layout } from 'antd';
 import SiteHeader from '~components/siteHeader/index'
 import BreadCurmb from '~components/breadCrumb/index'
-import Sider from '~components/sider/index'
+import Sider from '~components/member/sider/index'
+import  './index.less'
 const breadmessage = [{
     name: '首页',
     href: '/'
@@ -46,11 +47,11 @@ class MemberLayout extends React.Component {
         return (
             <div className="member-wrapper main-bg">
                 <SiteHeader />
-                <Layout.Content className="layout">
+                <Layout.Content  className="layout">
                     <BreadCurmb breadinfos={breadmessage} />
-                    <Layout>
+                    <Layout hasSider={true}>
                         <Sider siderinfos={siderinfos} />
-                        <Layout.Content>
+                        <Layout.Content className="member-content">
                             {this.props.children}
                         </Layout.Content>
                     </Layout>
