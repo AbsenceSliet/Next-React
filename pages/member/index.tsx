@@ -2,8 +2,14 @@ import * as React from  "react"
 import Link from "next/link"
 import { Button, Layout, Avatar, Row,Col,Card, Divider} from 'antd';
 import MemberLayout from '~components/member/MemberLayout/index'
+import {memberindex} from '~constants/api'
 import '~static/css/member/index.less'
 class MemberIndex extends React.Component{
+    static async getInitialProps({req}){
+        // let memberinfo = await memberindex()
+        // console.log(memberinfo);
+        // return {memberinfo}
+    }
     public async componentDidMount(){
         
     }

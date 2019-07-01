@@ -7,6 +7,7 @@ import VmcFooter from '~components/footer/index.tsx'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { withRouter } from 'next/router' 
+import { getImage } from '~constants/api'
 class MyApp extends App {
     static async getInitialProps({Component, router, ctx}) {
         let pageProps = {}
@@ -16,6 +17,7 @@ class MyApp extends App {
 
         return {pageProps}
     }
+    
     public render() {
         Router.onRouteChangeStart = () => {
             NProgress.start()

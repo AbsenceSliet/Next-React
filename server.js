@@ -16,9 +16,9 @@ const ssrCache = new LRUCache({
 
 const devProxy = {
     '/api': {
-        target: 'https://api.douban.com/',
+        target: 'http://127.0.0.1:7001',
         pathRewrite: {
-            '^/api': '/'
+            // '^/api': '/'
         },
         changeOrigin: true
     }
@@ -50,10 +50,8 @@ const renderAndCache = async(req, res, pagePath, queryParams) => {
 
 app.prepare().then(() => {
     const server = express()
-        // server.get('/', async(req, res) => {
-        //     renderAndCache(req, res, '/', {...req.params })
-        // })
-        // Set up the proxy.
+
+    // Set up the proxy.
     if (dev && devProxy) {
         const proxyMiddleware = require('http-proxy-middleware')
         Object.keys(devProxy).forEach(function(context) {
@@ -61,20 +59,12 @@ app.prepare().then(() => {
         })
     }
     server.get('/detail/:id', async(req, res) => {
-            const actualpage = `/list/detail`
-            const queryParams = { id: req.params.id }
+        const actualpage = `/list/detail`
+        const queryParams = { id: req.params.id }
 
-            // app.render(req, res, actualpage, queryParams)
+        renderAndCache(req, res, actualpage, {...req.params })
+    })
 
-            renderAndCache(req, res, actualpage, {...req.params })
-        })
-        // server.get('/member/*', async(req, res) => {
-        //     console.log('---', req.params)
-        //     const actualpage = `/member`
-        //     const queryParams = { id: req.params.id }
-
-    //     renderAndCache(req, res, actualpage, {...req.params })
-    // })
     server.get('*', (req, res) => {
         return handle(req, res)
     })

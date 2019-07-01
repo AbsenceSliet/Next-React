@@ -12,17 +12,21 @@ import './index.less'
 
 let navs = [{
     href: 'https://baidu.com',
-    name: '百度'
+    name: '百度',
+    key:'baidu'
 }, {
         href: 'https://baidu.com',
-        name: 'VMC商城'
+        name: 'VMC商城',
+        key:'vmcshop'
     }]
 let usernavs = [{
     href: 'https://baidu.com',
-    name: '消息通知'
+    name: '消息通知',
+    key:'message'
 }, {
         href: 'https://baidu.com',
-        name: '我的订单'
+        name: '我的订单',
+        key:'orders'
     }]
 interface MenuUser {
     href: string,

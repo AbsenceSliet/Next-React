@@ -7,16 +7,19 @@ import HeaderSearch from '~components/headerSearch/index'
 import './index.less'
 interface NavItem {
     href: string,
-    name: string
+    name: string,
+    key:string
 }
 let navs: Array<NavItem>;
 
 navs = [{
     href: 'https://baidu.com',
-    name: '百度'
+    name: '百度',
+    key:'baidu'
 }, {
     href: 'https://baidu.com',
-    name: 'VMC商城'
+    name: 'VMC商城',
+    key:'vmcshop'
 }]
 export default class SiteHeader extends React.Component{
 

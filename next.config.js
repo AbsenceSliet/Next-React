@@ -26,7 +26,8 @@ const configOptions = {
             '~config': resolve('config'),
             '~constants': resolve('constants'),
             '~static': resolve('static'),
-            '~pages': resolve('pages')
+            '~pages': resolve('pages'),
+            '~mock': resolve('mock')
         }
     }
 }
